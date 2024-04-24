@@ -60,9 +60,6 @@ Welcome to the Interview Preparation Platform! This web application is designed 
 ![Screenshot 8](screenshots/screenshot8.jpeg)
 ![Screenshot 9](screenshots/screenshot9.jpeg)
 ![Screenshot 10](screenshots/screenshot10.jpeg)
-### 🎥 Video Preview
-
-[![Video Preview](videos/video1.mp4)]
 
 
 ## 🤝 Contributing
