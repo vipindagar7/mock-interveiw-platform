@@ -1,0 +1,91 @@
+body {
+  background-image: url('/static/images/bg.png');
+  background-position: center;
+  background-repeat: no-repeat ;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+header {
+  background: rgba(152, 76, 213, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(11.5px);
+  -webkit-backdrop-filter: blur(11.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+}
+
+nav {
+  overflow: auto;
+  /* This enables scrolling */
+  scrollbar-width: none;
+  /* Hides scrollbar on Firefox */
+  -ms-overflow-style: none;
+}
+nav::-webkit-scrollbar {
+  display: none; /* Hides scrollbar on Chrome, Safari, and Opera */
+}
+
+.text3d {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3em;
+  letter-spacing: 0.1em;
+  color: #EEE;
+  animation: rotate 2s ease-in-out alternate infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(-10deg);
+  }
+
+  to {
+    transform: rotateY(10deg);
+
+  }
+}
+
+.message {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  top: 13%;
+  right: 2%;
+  padding: 32px;
+  z-index: 9999999999999;
+}
+
+/* Path: static/css/interview/base.css */
+
+@media screen and (max-width: 600px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background: linear-gradient(rgb(132, 106, 174), rgba(168, 182, 221));
+  }
+
+  .text3d {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    color: #EEE;
+    animation: rotate 2s ease-in-out alternate infinite;
+  }
+
+}
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+
+
+<div class="container mt-5">
+    <div class="row claymorphism neomorphism p-3">
+            <table class="">
+                <tbody>
+                    <tr>
+                        <th>Session Id</th>
+                        <td>{{ session.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Domain</th>
+                        <td>{{ session.domain }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>{{ session.date }}</td>
+                    </tr>
+                    <tr>
+                        <th>Time</th>
+                        <td>{{ session.time }}</td>
+                    </tr>
+                    {% if request.user.is_interviewer %}
+                    <tr>
+                        <th>User</th>
+                        <td>{{ session.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>
+                        <form action="/interview/schduled_session/" method="post" id="scheduledIntervewStatusForm">
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value="{{session.id}}">
+                          <select name="status" id="status" class="form-control" onchange="submitForm()">
+                            {% if session.status %}
+                  <option value="{{session.status}}">{{session.status}}</option>
+                  {% endif %}
+                            <option value="pending" disabled>select option</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                          </select>  
+                        </form>
+                      </td>
+                    </tr>
+                    <script>
+
+                        function submitForm()
+                        {
+                            document.getElementById("scheduledIntervewStatusForm").submit();
+                        }
+                    </script> 
+                    {% elif  not request.user.is_interviewer and not request.user.is_superuser %}
+
+                    <tr>
+                        <th>Interviewer</th>
+                        <td>{{ session.interviewer.email }}</td>
+                    </tr>
+                    
+                    {% endif %}
+                    <tr class="text-center m-2">
+                        <td colspan="2">
+                            <a href="/interview/schduled_session/" class="btn btn-primary">Back</a>
+                        </td>
+                    <tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock main %}
+
+{% block script %}
+
+
+
+{% endblock script %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static '/css/account/morphism.css' %}">
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container-md">
+    
+    <!-- login form here -->
+    <div class="d-flex flex-column justify-content-center align-items-center text-center" style="height: 80vh;">
+        <div class="claymorphism neomoprhism hover p-5">
+            <form method="post">
+                {% csrf_token %}
+                
+                <h2 class="text-center">Create an account</h2>
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">Create User</button>
+            </form>
+            <p class="m-2">Already have an account? <a href="/account/login/" class="text-primary"> Sign In</a></p>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock main %}
+
+{% block script %}
+
+
+{% endblock script %}

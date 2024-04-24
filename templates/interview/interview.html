@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'css/interview/interview.css' %}">
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+<div class='content'>
+    <div class="justify-content-center welcome-intro">
+
+        <h2 class="text-center text-bg"> A quick way to prepare for your next interview in</h2>
+        <h2 id="dynamicDomains" class="p-1 text-white text-center text-bg">Front-end</h2>
+        <h2 class="text-center text-bg">Practice key questions, get insights about your answers, <br> and get more
+            comfortable interviewing.</h2>
+
+        <div class="container d-flex justify-content-center">
+        
+            <a href="/interview/select-domain" class="btn btn-info">START SESSION</a>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock main %}
+
+{% block script %}
+
+<script src="{% static 'js/interview/interview.js' %}"></script>
+
+
+{% endblock script %}

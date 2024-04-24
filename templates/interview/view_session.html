@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static '/css/interview/feedback.css' %}">
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container-sm d-flex flex-column gap-2 p-5">
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <h4 class="text center">Domain is {{session.session.domain}}</h4>
+</div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 1: <span class="text-center">{{session.question1}}</span></p>
+        <p>ans 1: <span class="text-center">{{session.user_answer1}}</span></p>
+        <p>demo answer 1: <span class="text-center">{{session.session.demo_answer1}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 2: <span class="text-center">{{session.question2}}</span></p>
+        <p>ans 2: <span class="text-center">{{session.user_answer2}}</span></p>
+        <p>demo answer 2: <span class="text-center">{{session.session.demo_answer2}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 3: <span class="text-center">{{session.question3}}</span></p>
+        <p>ans 3: <span class="text-center">{{session.user_answer3}}</span></p>
+        <p>demo answer 3: <span class="text-center">{{session.session.demo_answer3}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 4: <span class="text-center">{{session.question4}}</span></p>
+        <p>ans 4: <span class="text-center">{{session.user_answer4}}</span></p>
+        <p>demo answer 4: <span class="text-center">{{session.session.demo_answer4}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 5: <span class="text-center">{{session.question5}}</span></p>
+        <p>ans 5: <span class="text-center">{{session.user_answer5}}</span></p>
+        <p>demo answer 5: <span class="text-center">{{session.session.demo_answer5}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 6: <span class="text-center">{{session.question6}}</span></p>
+        <p>ans 6: <span class="text-center">{{session.user_answer6}}</span></p>
+        <p>demo answer 6: <span class="text-center">{{session.session.demo_answer6}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 7: <span class="text-center">{{session.question7}}</span></p>
+        <p>ans 7: <span class="text-center">{{session.user_answer7}}</span></p>
+        <p>demo answer 7: <span class="text-center">{{session.session.demo_answer7}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 8: <span class="text-center">{{session.question8}}</span></p>
+        <p>ans 8: <span class="text-center">{{session.user_answer8}}</span></p>
+        <p>demo answer 8: <span class="text-center">{{session.session.demo_answer8}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 9: <span class="text-center">{{session.question9}}</span></p>
+        <p>ans 9: <span class="text-center">{{session.user_answer9}}</span></p>
+        <p>demo answer 9: <span class="text-center">{{session.session.demo_answer9}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 10: <span class="text-center">{{session.question10}}</span></p>
+        <p>ans 10: <span class="text-center">{{session.user_answer10}}</span></p>
+        <p>demo answer 10: <span class="text-center">{{session.session.demo_answer10}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        {{ feedback | safe }}
+    </div>
+    
+    <div class="d-flex justify-content-center align-item-center gap-2">
+        <button class="btn btn-primary" onclick="window.print()">Download</button>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{session.session.id}}">
+            <input type="hidden" name="domain" value="{{session.session.domain}}">
+            <input type="hidden" name="question1" value="{{session.question1}}">
+            <input type="hidden" name="question2" value="{{session.question2}}">
+            <input type="hidden" name="question3" value="{{session.question3}}">
+            <input type="hidden" name="question4" value="{{session.question4}}">
+            <input type="hidden" name="question5" value="{{session.question5}}">
+            <input type="hidden" name="question6" value="{{session.question6}}">
+            <input type="hidden" name="question7" value="{{session.question7}}">
+            <input type="hidden" name="question8" value="{{session.question8}}">
+            <input type="hidden" name="question9" value="{{session.question9}}">
+            <input type="hidden" name="question10" value="{{session.question10}}">
+
+            <input type="hidden" name="user_answer1" value="{{session.user_answer1}}">
+            <input type="hidden" name="user_answer2" value="{{session.user_answer2}}">
+            <input type="hidden" name="user_answer3" value="{{session.user_answer3}}">
+            <input type="hidden" name="user_answer4" value="{{session.user_answer4}}">
+            <input type="hidden" name="user_answer5" value="{{session.user_answer5}}">
+            <input type="hidden" name="user_answer6" value="{{session.user_answer6}}">
+            <input type="hidden" name="user_answer7" value="{{session.user_answer7}}">
+            <input type="hidden" name="user_answer8" value="{{session.user_answer8}}">
+            <input type="hidden" name="user_answer9" value="{{session.user_answer9}}">
+            <input type="hidden" name="user_answer10" value="{{session.user_answer10}}">
+
+            <button class="btn btn-primary" type="submit">Get Feedback</button>
+        </form>
+    </div>
+</div>
+
+ 
+{% endblock main %}
+
+{% block script %}
+
+
+{% endblock script %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+<style>
+body {
+    background-color: #f8f9fa;
+  }
+  .container {
+    margin-top: 50px;
+  }
+  .primary-text {
+    color: #007bff; /* Bootstrap primary color */
+  }
+  .success-text {
+    color: #28a745; /* Bootstrap success color */
+  }
+  .danger-text {
+    color: #dc3545; /* Bootstrap danger color */
+  }
+  .warning-text {
+    color: #ffc107; /* Bootstrap warning color */
+  }
+</style>
+</head>
+<body>
+<div class="container morphism p-3">
+  <h1 class="text-center mb-4">Welcome to <span class="primary-text">Global Interview Simulate</span>!</h1>
+  <p class="lead">At <span class="primary-text">Global Interview Simulate</span>, we are committed to providing a transformative experience for individuals seeking to refine their interview skills and excel in their professional pursuits. Our platform seamlessly integrates state-of-the-art technology with user-centric design to offer an unparalleled mock interview experience.</p>
+  <p class="lead">Leveraging the latest advancements in artificial intelligence and speech recognition, <span class="primary-text">Global Interview Simulate</span> offers users a dynamic environment to practice interviews at their convenience. Whether you're preparing for a job in your local market or aiming for international opportunities, <span class="primary-text">Global Interview Simulate</span> is your ultimate companion in honing your interview prowess.</p>
+  <p class="lead">Our AI-powered interview simulator crafts personalized questions tailored to your chosen industry, allowing you to rehearse responses to real-world scenarios. From conducting mock interviews with AI to scheduling sessions with human interviewers, <span class="primary-text">Global Interview Simulate</span> provides comprehensive feedback and actionable insights to elevate your performance.</p>
+  <p class="lead">Driven by a passion for innovation and a dedication to user satisfaction, our team is committed to continually enhancing <span class="primary-text">Global Interview Simulate</span>'s features and functionality. Join us today and embark on a journey towards mastering the art of interviewing on a global scale.</p>
+  <p class="lead">Let <span class="primary-text">Global Interview Simulate</span> empower you to unlock your full potential and achieve your professional aspirations.</p>
+  <hr>
+ 
+  <h3 class="warning-text">Why Choose <span class="primary-text">Global Interview Simulate</span>?</h3>
+  <ul>
+    <li>Practice interviews with AI or human interviewers</li>
+    <li>Receive personalized feedback and insights</li>
+    <li>Access a wide range of industry-specific questions</li>
+    <li>Convenient scheduling options</li>
+    <li>User-friendly interface for seamless navigation</li>
+    <li>Continuously updated features and improvements</li>
+  </ul>
+  <hr>
+  <h3 class="danger-text">Join Us Today!</h3>
+  <p>Ready to take your interview skills to the next level? Sign up for <span class="primary-text">Global Interview Simulate</span> now and start your journey towards success!</p>
+  <div class="d-flex justify-content-center">
+    <a href="/accounts/new_user/" class="btn btn-primary">Sign Up</a>
+  </div>
+</div>
+
+{% endblock main %}
+
+{% block script %}
+
+
+{% endblock script %}

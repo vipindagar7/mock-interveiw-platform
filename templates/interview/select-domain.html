@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'css/interview/interview-type.css' %}">
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+
+<div class='content'>
+  <div class="d-flex flex-column justify-content-center select-type p-5">
+    <div class="instruction d-flex flex-column justify-content-center">
+      <h4 class="text-primary text-center">Instructions</h4>
+      <ul >
+          <li class="text-danger">Do not refresh the page after session successfully created</li>
+          <li class="text-danger">Say "Yes I am ready" to start the interview</li>
+      </ul>
+  </div>
+    <h1 class="text-center">Enter the name of your doamin?</h1>
+
+    <!-- subjecive and objective -->
+    <div class="d-flex justify-content-center flex-column gap-2 w-100 p-5">
+      <form action="/interview/session/" method="post" id="domain-form" onkeypress="return event.keyCode != 13;">
+        {% csrf_token %}
+        <input class="form-control" type="text" placeholder="e.g. Django Interview for fresher" required name="domain">
+      </form>
+      <button class="btn btn-primary" onclick="askToStart()">Create my new Session</button>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock main %}
+
+{% block script %}
+
+
+
+<script src="{% static 'js/interview/creating-session.js' %}"></script>
+
+
+{% endblock script %}

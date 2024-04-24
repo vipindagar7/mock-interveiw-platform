@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<style>
+    .profile-img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock style %}
+
+{% block title %}
+Edit Profile
+{% endblock title %}
+
+{% block main %}
+<div class="container mt-5">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="mb-4 claymorphism p-3">
+                    <div class="card-body text-center ">
+                        <h1 class="card-title">Profile Picture</h1>
+                        {% if profile.image %}
+                    <img src="{{ profile.image.url }}" alt="Profile Picture" class="profile-img mb-3"
+                        id="userProfileImage">
+                        {% else %}
+                        <img src="{% static 'images/profile_avatar.jpg' %}" alt="Profile Picture" class="profile-img mb-3"
+                            id="userProfileImage">
+                        {% endif %}
+                        <input type="file" class="form-control-file" id="image" onchange="previewImage(this)"
+                            name="profile">
+                        <div>
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" id="first_name" class="form-control mb-3"
+                                value="{{request.user.first_name}}" placeholder="First Name">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control mb-3"
+                                value="{{request.user.last_name}}" placeholder="Last Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="claymorphism p-3 mb-4">
+                    <div class="card-body">
+                        <h2>About Me</h2>
+                        <label for="bio">Bio</label>
+                        <textarea name="bio" id="bio" class="form-control mb-3" placeholder="Enter your bio here"
+                            rows="3">{{profile.bio}}</textarea>
+                        <label for="interests">Interests</label>
+                        <textarea name="intrests" id="intrests" class="form-control mb-3"
+                            placeholder="Enter your interests here" rows="3">{{profile.intrests}}</textarea>
+                        <label for="skills">Skills</label>
+                        <textarea name="skills" id="skills" class="form-control" placeholder="Enter your skills here"
+                            rows="3">{{profile.skills}}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="claymorphism p-3 mb-4">
+                    <div class="card-body">
+                        <h2>Contact Information</h2>
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="form-control mb-3"
+                            value="{{request.user.email}}" placeholder="Email">
+                        <label for="mobile">Mobile</label>
+                        <input type="text" name="mobile" id="mobile" class="form-control mb-3"
+                            value="{{profile.mobile}}" placeholder="Mobile">
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location" class="form-control"
+                            value="{{profile.location}}" placeholder="Location">
+                    </div>
+                </div>
+                <div class="claymorphism p-3 mb-4">
+                    <div class="card-body">
+                        <h2>Social Links</h2>
+                        <label for="instagram">Instagram</label>
+                        <input type="text" name="instagram" id="instagram" class="form-control mb-3"
+                            value="{{profile.instagram}}" placeholder="Instagram">
+                        <label for="twitter">Twitter</label>
+                        <input type="text" name="twitter" id="twitter" class="form-control mb-3"
+                            value="{{profile.twitter}}" placeholder="Twitter">
+                        <label for="github">GitHub</label>
+                        <input type="text" name="github" id="github" class="form-control mb-3"
+                            value="{{profile.github}}" placeholder="GitHub">
+                        <label for="linkedin">LinkedIn</label>
+                        <input type="text" name="linkedin" id="linkedin" class="form-control"
+                            value="{{profile.linkedin}}" placeholder="LinkedIn">
+                    </div>
+                    
+                </div>
+                {% if request.user.is_interviewer %}
+                <div class="claymorphism p-3 mb-4">
+                    <div class="card-body">
+                        <h2>Company Information</h2>
+                        <label for="experience">Experience</label>
+                        <input type="text" name="experience" id="experience" class="form-control mb-3"
+                            value="{{profile.experience}}" placeholder="Experience">
+                        <label for="company">Company</label>
+                        <input type="text" name="company" id="company" class="form-control mb-3"
+                            value="{{profile.company}}" placeholder="Company">
+                        <label for="position">Position</label>
+                        <input type="text" name="position" id="position" class="form-control"
+                            value="{{profile.position}}" placeholder="Position">
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+</div>
+{% endblock main %}
+
+{% block script %}
+<script>
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('userProfileImage').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+{% endblock script %}

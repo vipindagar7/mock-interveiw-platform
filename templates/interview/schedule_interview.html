@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static '/css/profile.css' %}">
+
+<style>
+    .social-icons a {
+        color: #333;
+        margin: 0 5px;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        color: #007bff;
+    }
+</style>
+{% endblock style %}
+
+{% block title %}
+GIS
+{% endblock title %}
+
+{% block main %}
+<div class="container mt-5 text-white">
+    <div class="row">
+        <div class="col-md-6">
+            {% if interviewer.image %}
+            <div class="interviewer-image">
+                <img src="{{interviewer.image.url }}" alt="Profile Image" class="img-fluid rounded-circle" style="width: 398px;">
+            </div>
+            {% else %}
+            <div class="interviewer-image">
+                <img src="{% static 'images/interviewer.jpeg' %}" alt="Default Profile Image" class="img-fluid rounded-circle" style="width: 398px;">
+            </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6 text-dark text-white">
+            <h2>{{ interviewer.user.first_name }} {{interviewer.user.last_name}}</h2>
+            <p>{{interviewer.position}} {{interviewer.company}}</p>
+            <h5>Email: {{ interviewer.user.email }}</h5>
+            <form action="" method="post" class="claymorphism p-4 text-dark">
+                <h3 class="text-center">Enter Details to request Mock Interview</h3>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="domain">Domain</label>
+                    <input type="text" class="form-control" id="domain" name="domain" placeholder="Enter your domain you want to interview of?">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" id="date" name="date">
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="time" class="form-control" id="time" name="time">
+                </div>
+
+                <button class="btn btn-primary mt-2">Send Request</button>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col claymorphism p-3">
+            <h4 class="mb-4">Interviewer Details</h4>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <p><strong>Bio:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <p>{{ interviewer.bio }}</p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <p><strong>Experience:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <p>{{ interviewer.experience }}</p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <p><strong>Skills:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <p>{{ interviewer.skills }}</p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <p><strong>Interests:</strong></p>
+                </div>
+                <div class="col-md-8">
+                    <p>{{ interviewer.interests }}</p>
+                </div>
+            </div>
+            <div class="social-icons d-flex justify-content-around">
+                {% if interviewer.twitter %}
+                <a href="https://twitter.com/{{interviewer.twitter}}" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                {% endif %}
+    
+                {% if interviewer.linkedin %}
+                <a href="https://www.linkedin.com/in/{{interviewer.linkedin}}" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                {% endif %}
+    
+                {% if interviewer.github %}
+                <a href="https://github.com/{{interviewer.github}}" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                {% endif %}
+    
+                {% if interviewer.instagram %}
+                <a href="https://www.instagram.com/{{interviewer.instagram}}" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock main %}
+
+{% block script %}
+{% endblock script %}

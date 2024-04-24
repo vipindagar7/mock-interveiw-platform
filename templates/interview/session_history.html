@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+
+
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="d-flex justify-content-center align-items-center container-md text-white flex-column">
+    <div class="table-responsive-md m-5 bg-none claymorphism neomorphism p-5">
+        <table class="table-bordered text-center w-100 border-primarysource ">
+            <thead>
+              {% if created_session %}
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Session ID</th>
+                  <th scope="col">Session Domain</th>
+                  <th scope="col">Created On</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                {% for session in created_session  %}
+                <tr>
+                  <th scope="row">{{forloop.counter}}</th>
+                  <td>{{session.id}}</td>
+                  <td>{{session.domain}}</td>
+                  <td>{{session.created_on}}</td>
+                  <td>
+                    <a href="/interview/view_session/{{session.id}}/" class="btn btn-info">View</a>
+                    <a href="/interview/delete_session/{{session.id}}/" class="btn btn-danger">Delete</a>
+
+                  </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <h1> No session found</h1>
+                {% endif %}
+              </tbody>
+            
+        </table>
+      </div>
+</div>
+
+
+
+
+{% endblock main %}
+
+{% block script %}
+
+
+{% endblock script %}

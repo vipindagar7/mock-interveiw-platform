@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<style>
+    .profile-img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock style %}
+
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="mb-4 claymorphism neomorphism p-3 text-white">
+                <div class="card-body text-center">
+                    {% if profile.image %}
+                    <img src="{{ profile.image.url }}" alt="Profile Picture" class="profile-img mb-3"
+                        id="userProfileImage">
+                        {% else %}
+                        <img src="{% static 'images/profile_avatar.jpg' %}" alt="Profile Picture" class="profile-img mb-3"
+                            id="userProfileImage">
+                        {% endif %}
+                    <div>
+                        <h2>{{ request.user.first_name }} {{ request.user.last_name }} {% if request.user.is_interviewer %}(Interviewer){% endif %}</h2>
+                        <p>{{ profile.bio }}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="claymorphism neomorphism  p-3 mb-4 text-white col-md-6">
+            <div class="card-body">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> {{ request.user.email }}</p>
+                <p><strong>Mobile:</strong> {{ profile.mobile }}</p>
+                <p><strong>Location:</strong> {{ profile.location }}</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="claymorphism morphism p-3 mb-4 text-white">
+                <div class="card-body ">
+                    <h2>Social Links</h2>
+                    <div class="d-flex justify-content-around">
+                        {% if profile.instagram %}
+                        <a href="https://instagram.com/{{ profile.instagram }}" target="_blank"><i class="fab fa-instagram fa-3x"></i></a>
+                        {% endif %}
+                        {% if profile.twitter %}
+                        <a href="https://twitter.com/{{ profile.twitter }}" target="_blank"><i class="fab fa-twitter fa-3x"></i></a>
+                        {% endif %}
+                        {% if profile.github %}
+                        <a href="https://github.com/{{ profile.github }}" target="_blank"><i class="fab fa-github fa-3x"></i></a>
+                        {% endif %}
+                        {% if profile.linkedin %}
+                        <a href="https://linkedin.com/in/{{ profile.linkedin }}" target="_blank"><i class="fab fa-linkedin fa-3x"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% if request.user.is_interviewer %}
+            <div class="claymorphism p-3 mb-4 text-white">
+                <div class="card-body">
+                    <h2>Company Information</h2>
+                    <p><strong>Experience:</strong> {{ profile.experience }}</p>
+                    <p><strong>Company:</strong> {{ profile.company }}</p>
+                    <p><strong>Position:</strong> {{ profile.position }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <a href="/accounts/profile_edit/" class="btn btn-outline-info btn-lg">Edit Profile</a>
+    </div>
+</div>
+{% endblock main %}

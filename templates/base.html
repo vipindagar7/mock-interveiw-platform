@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/morphism.css' %}">
+    
+    {% block style %}
+
+    {% endblock style %}
+    <title>{% block title %} Mock Interview {% endblock title %}</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header class="d-flex justify-content-around w-100 p-4">
+        <div>
+            <h1 class="text3d">
+                GLOBAL INTERVIEW SIMULATE
+            </h1>
+        </div>
+        <div class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow">
+            <button class="navbar-toggler position-relative  d-md-none collapsed morphism" type="button"
+                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    
+
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block morphism sidebar collapse"
+        style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/profile">
+                        Profile
+                    </a>
+                </li>
+            </ul>
+            {% if not user.is_interviewer and not user.is_superuser %}
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                Interview
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="/interview/view_interviewers/">
+                        Schedule Interview
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/interview/">
+                        With AI
+                    </a>
+                </li>
+            </ul>
+            {% endif %}
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                History
+            </h6>
+            <ul class="nav flex-column mb-2">
+            <!-- if user is interview then show this nav  -->
+            {% if user.is_interviewer %}
+            <li class="nav-item">
+                <a class="nav-link" href="/interview/schduled_session/">
+                    Scheduled
+                </a>
+            </li>
+            {% endif %}
+            <!-- if user is not interviewer and not admin then this nav -->
+            {% if not user.is_interviewer and not user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="/interview/session_history/">
+                    Created Session
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/interview/schduled_session/">
+                    Scheduled Session
+                </a>
+            </li>
+            
+            {% endif %}
+        </ul>
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                Accounts
+            </h6>
+            <!-- if user is admin or super user then show this nav  -->
+            {% if user.is_superuser %}
+            <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="/accounts/manage_user/">
+                    Manage User
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/accounts/new_user/">
+                    Create User
+                </a>
+            </li>
+        </ul>
+            {% endif %}
+            <!-- this nav is for all user -->
+            <ul class="nav flex-column mb-2">
+              
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/settings">
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/logout/">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+            {% else %}
+            <!-- if user is not logged in then this nav -->
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                Accounts
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/login/">
+                        Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/new_user/">
+                        Register
+                    </a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <!-- main  -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="message p-fixed ">
+            <span class="text-center">{{ message }}</span>
+        </div>
+        <script>
+            setTimeout(function() {
+                var messageElement = document.querySelector('.message');
+                if (messageElement) {
+                    messageElement.style.display = 'none';
+                }
+            }, 3000); // Hide the message after 3 seconds
+        </script>
+        {% endfor %}
+    {% endif %}
+
+        {% block main %}
+
+
+       
+
+        {% endblock main %}
+    </main>
+
+    <!-- footer  -->
+    <footer>
+       
+    </footer>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/account/dashboard.js' %}"></script>
+
+    {% block script %}{% endblock script %}
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+ 
+
+
+</script>
+
+</html>

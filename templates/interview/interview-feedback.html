@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static '/css/interview/feedback.css' %}">
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="container-sm d-flex flex-column gap-2 p-5">
+    <input type="hidden" name="domain" id="domain" value="{{domain}}">
+    <input type="hidden" name="session" id="session_id" value="{{session}}">
+   
+
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 1: <span class="text-center">{{question0}}</span></p>
+        <p>your answer 1: <span class="text-center">{{answer0}}</span></p>
+        <p>demo answer 1: <span class="text-center">{{demo_answer1}}</span></p>
+
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 2: <span class="text-center">{{question1}}</span></p>
+        <p>your answer 2: <span class="text-center">{{answer1}}</span></p>
+        <p>demo answer 2: <span class="text-center">{{demo_answer2}}</span></p>
+
+
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 3: <span class="text-center">{{question2}}</span></p>
+        <p>your answer 3: <span class="text-center">{{answer2}}</span></p>
+        <p>demo answer 3: <span class="text-center">{{demo_answer3}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 4: <span class="text-center">{{question3}}</span></p>
+        <p>your answer 4: <span class="text-center">{{answer3}}</span></p>
+        <p>demo answer 4: <span class="text-center">{{demo_answer4}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 5: <span class="text-center">{{question4}}</span></p>
+        <p>your answer 5: <span class="text-center">{{answer4}}</span></p>
+        <p>demo answer 5: <span class="text-center">{{demo_answer5}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 6: <span class="text-center">{{question5}}</span></p>
+        <p>your answer 6: <span class="text-center">{{answer5}}</span></p>
+        <p>demo answer 6: <span class="text-center">{{demo_answer6}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 7: <span class="text-center">{{question6}}</span></p>
+        <p>your answer 7: <span class="text-center">{{answer6}}</span></p>
+        <p>demo answer 7: <span class="text-center">{{demo_answer7}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 8: <span class="text-center">{{question7}}</span></p>
+        <p>your answer 8: <span class="text-center">{{answer7}}</span></p>
+        <p>demo answer 8: <span class="text-center">{{demo_answer8}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 9: <span class="text-center">{{question8}}</span></p>
+        <p>your answer 9: <span class="text-center">{{answer8}}</span></p>
+        <p>demo answer 9: <span class="text-center">{{demo_answer9}}</span></p>
+    </div>
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        <p>que 10: <span class="text-center">{{question9}}</span></p>
+        <p>your answer 10: <span class="text-center">{{answer9}}</span></p>
+        <p>demo answer 10: <span class="text-center">{{demo_answer10}}</span></p>
+    </div>
+ 
+    <div
+        class="d-flex justify-content-justify align-item-center flex-column border border-primary p-3 rounded-5 pdf-container">
+        {{ feedback | safe }}
+    </div>
+    
+    <div class="d-flex justify-content-center align-item-center">
+        <button class="btn btn-primary" onclick="window.print()">Download</button>
+    </div>
+</div>
+
+
+{% endblock main %}
+
+{% block script %}
+
+
+{% endblock script %}

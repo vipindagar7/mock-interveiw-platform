@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'css/interview/interview-session.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+{% endblock style %}
+
+
+{% block title %}
+GIS
+{% endblock title %}
+
+
+{% block main %}
+
+<div class="instruction">
+    <h3 class="text-danger text-center">Do not refresh the page until your interview session finishes..</h3>
+   
+</div>
+
+{% comment %} here forms start  {% endcomment %}
+<form action="/interview/feedback/" method="post" id="interview_session_form">
+{% csrf_token %}    
+<input type="hidden" name="domain" value="{{domain}}">
+<input type="hidden" name="session" value="{{session.id}}">
+<div class="container-lg d-flex session flex-column">
+    <div class="question active">
+        <div class="d-flex flex-column container-fluid  w-100">
+            <div class="que m-4">
+                <input type="text" name="question0"  class="form-control question-text" readonly value="{{ questions.0.question }}">
+            </div>
+            <textarea name="answer_input0"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+        </div>
+    </div>
+
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question1"   class="form-control question-text" readonly
+
+                    value="{{ questions.1.question }}">
+            </div>
+            <textarea name="answer_input1"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question2"   class="form-control question-text" readonly
+
+                    value="{{ questions.2.question }}">
+            </div>
+            <textarea name="answer_input2"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question3"   class="form-control question-text" readonly
+
+                    value="{{ questions.3.question }}">
+            </div>
+            <textarea name="answer_input3"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question4"   class="form-control question-text" readonly
+
+                    value="{{ questions.4.question }}">
+            </div>
+            <textarea name="answer_input4"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question5"   class="form-control question-text" readonly
+
+                    value="{{ questions.5.question }}">
+            </div>
+            <textarea name="answer_input5"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question6"   class="form-control question-text" readonly
+
+                    value="{{ questions.6.question }}">
+            </div>
+            <textarea name="answer_input6"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question7"   class="form-control question-text" readonly
+
+                    value="{{ questions.7.question }}">
+            </div>
+            <textarea name="answer_input7"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+      
+                 
+                <input type="text" name="question8"   class="form-control question-text" readonly
+
+                    value="{{ questions.8.question }}">
+            </div>
+            <textarea name="answer_input8"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <btn class="btn btn-primary next-btn" onclick="nextQuestionSpeak()" >next</btn>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="question ">
+        <div class="d-flex flex-column container-fluid  w-100">
+            
+            <div class="que m-4">
+                 
+                <input type="text" name="question9"   class="form-control question-text" readonly
+
+                    value="{{ questions.9.question }}">
+            </div>
+            <textarea name="answer_input9"     cols="30" rows="10" class="form-control m-4 answer-input"
+                placeholder="Type your Answer...."></textarea>
+            <p id="userSaid"></p>
+            <div class="ans d-flex justify-content-center gap-5 mt-4">
+                 
+                                  <btn class="btn btn-info" onclick="listenAnswers()"> <i class="fas fa-microphone"></i>Answer</btn>
+                <button class="btn btn-primary" onclick="nextQuestionSpeak()">Submit</button>
+            </div>
+
+        </div>
+    </div>
+
+    
+   
+</div>
+</form>
+{% endblock main %}
+
+{% block script %}
+<script src="{% static 'js/interview/session.js' %}"></script>
+<script src="{% static 'js/interview/speech.js' %}"></script>
+
+{% endblock script %}

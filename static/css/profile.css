@@ -1,0 +1,8 @@
+.profile-img {
+  max-width: 200px;
+}
+/* Custom CSS to remove background color from list items */
+.list-group-item {
+  background-color: transparent;
+  border: none;
+}
