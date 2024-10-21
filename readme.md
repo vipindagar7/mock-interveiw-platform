@@ -20,7 +20,7 @@ Welcome to the Interview Preparation Platform! This web application is designed 
 
 1. Clone the repository:
    ```
-   git clone https://github.com/vipindagar7/mock-interveiw-with-ai.git
+   git clone https://github.com/vipindagar7/mock-interveiw-platform.git
    ```
 2. Install dependencies:
    ```
